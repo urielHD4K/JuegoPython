@@ -30,8 +30,8 @@ win = pygame.display.set_mode((win_width, win_height))
 pygame.display.set_caption('Level Editor')
 
 # load backgrounds
-sun_img = pygame.image.load('assets/sun.png')
-bg_img = pygame.image.load('assets/BG1.png')
+sun_img = pygame.image.load('assets/luna.png')
+bg_img = pygame.image.load('assets/BG1.jpg')
 bg_img = pygame.transform.scale(bg_img, (win_width - margin, HEIGHT))
 
 # load buttons

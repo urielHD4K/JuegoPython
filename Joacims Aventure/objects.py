@@ -135,8 +135,6 @@ class World:
 		for tile in self.tile_list:
 			self.win.blit(tile[0], tile[1])
 
-# -------------------------------------------------------------------------------------------------
-#											 Creates Player
 class Player:
 	def __init__(self, win, pos, world, groups):
 		self.reset(win, pos, world, groups)

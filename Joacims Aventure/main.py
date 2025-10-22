@@ -18,7 +18,7 @@ clock = pygame.time.Clock()
 FPS = 30
 
 print("Iniciando carga de video...")
-video_path = 'video/1.mp4'
+video_path = 'video/Cinematica1.mp4'
 
 full_path = os.path.abspath(video_path)
 print(f"Buscando video en la ruta absoluta: {full_path}")
@@ -73,7 +73,6 @@ data = load_level(level)
 player_pos = (10, 340)
 
 
-# creating world & objects
 water_group = pygame.sprite.Group()
 lava_group = pygame.sprite.Group()
 forest_group = pygame.sprite.Group()
@@ -100,7 +99,6 @@ home_btn  = Button(home, (45,42), WIDTH//2 - 20, HEIGHT//2 + 20)
 exit_btn  = Button(exit, (45,42), WIDTH//2 + 70, HEIGHT//2 + 20)
 
 
-# function to reset a level
 def reset_level(level):
     global cur_score
     cur_score = 0
@@ -111,7 +109,6 @@ def reset_level(level):
             group.empty()
         world = World(win, data, groups)
         player.reset(win, player_pos, world, groups)
-# 10, 340
     return world
 
 score = 0
@@ -153,8 +150,6 @@ while running:
     
     if show_intro:
         if not video_playing:
-            # --- LÓGICA CORREGIDA ---
-            # Solo necesitamos que el 'clip' exista para empezar
             if clip: 
                 # Ahora, SÍ el sonido existe, lo reproducimos
                 if intro_sound:
@@ -170,12 +165,10 @@ while running:
             # --- FIN DE LA CORRECCIÓN ---
 
         # Calcula el tiempo actual del video
-        # (Añadimos 'if video_playing' para evitar error si el clip no cargó)
         if video_playing:
             current_time_ms = pygame.time.get_ticks() - intro_start_time
         
             if not clip or current_time_ms >= clip_duration_ms:
-                # El video terminó o no existe
                 show_intro = False
                 main_menu = True
                 if intro_sound: 
